@@ -8,19 +8,52 @@
     <link rel="shortcut icon" href="./images/site/iseoul/favicon-iseoul.svg">
     <link rel="stylesheet" href="./css/site/site.css">
 </head>
-<body class="site-body page-body">
-    <header class="site-header clinic-header" data-auto-hide-header>
+<body class="site-body page-body" id="top">
+    <header class="site-header clinic-header">
         <div class="site-container clinic-header-row">
             <a href="./index.html" class="brand brand-logo-only">
                 <img src="./images/site/iseoul/logo-header.svg" alt="아이(I)서울한의원 로고" class="brand-logo-image" />
             </a>
             <nav class="site-nav clinic-nav" aria-label="상단 메뉴">
                 <ul class="clinic-main-menu">
-                    <li><a href="./page-about.html">병원소개</a></li>
-                    <li><a href="./page-kids-learning-rhinitis.html" class="is-active">성장·학습·비염</a></li>
-                    <li><a href="./page-constitution-women.html">체질·여성</a></li>
-                    <li><a href="./page-skin-diet-hair.html">피부·비만·탈모</a></li>
-                    <li><a href="./page-pain-traffic.html">통증·교통사고</a></li>
+                    <li class="has-submenu">
+                        <a href="./page-about.html">병원소개</a>
+                        <ul class="clinic-submenu">
+                            <li><a href="./page-clinic-introduction.html">병원소개</a></li>
+                            <li><a href="./page-location.html">오시는 길</a></li>
+                            <li><a href="./page-clinic-hours.html">진료 시간</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="./page-kids-learning-rhinitis.html" class="active">성장·학습·비염</a>
+                        <ul class="clinic-submenu">
+                            <li><a href="./page-growth-clinic.html">성장 클리닉</a></li>
+                            <li><a href="./page-learning-clinic.html">학습 클리닉</a></li>
+                            <li><a href="./page-rhinitis-clinic.html">비염 클리닉</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="./page-constitution-women.html">체질·여성</a>
+                        <ul class="clinic-submenu">
+                            <li><a href="./page-constitution-care.html">체질개선 클리닉</a></li>
+                            <li><a href="./page-women-clinic.html">여성질환 클리닉</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="./page-skin-diet-hair.html">피부·비만·탈모</a>
+                        <ul class="clinic-submenu">
+                            <li><a href="./page-skin-care.html">피부질환 클리닉</a></li>
+                            <li><a href="./page-diet-clinic.html">비만 클리닉</a></li>
+                            <li><a href="./page-hair-loss.html">탈모 클리닉</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="./page-pain-traffic.html">통증·교통사고</a>
+                        <ul class="clinic-submenu">
+                            <li><a href="./page-pain-clinic.html">통증 클리닉</a></li>
+                            <li><a href="./page-traffic-accident.html">교통사고 클리닉</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -37,7 +70,7 @@
                 <nav aria-label="서브 메뉴">
                     <ul>
                         <li><a href="./page-growth-clinic.html">성장 클리닉</a></li>
-                        <li><a href="./page-learning-clinic.html" class="is-active">학습 클리닉</a></li>
+                        <li><a href="./page-learning-clinic.html" class="active">학습 클리닉</a></li>
                         <li><a href="./page-rhinitis-clinic.html">비염 클리닉</a></li>
                     </ul>
                 </nav>
@@ -50,9 +83,9 @@
 
     <footer class="site-footer">
         <div class="site-container footer-inner">
-            <p>대구광역시 수성구 교학로 13, 만촌3차 화성파크드림 상가동 201호</p>
             <p>아이(I)서울한의원 · 대표원장 이승현 | TEL 053-425-1900</p>
-            <div class="footer-hours"><p>월·금 09:00 - 18:30, 화·목 09:00 - 20:00 야간진료, 수 09:00 - 13:00 · 토 09:00 - 16:00 · 일요일 휴진</p></div>
+            <p>대구광역시 수성구 교학로 13, 만촌3차 화성파크드림 상가동 201호</p>
+            <div class="footer-hours"><p>월·금 09:00 - 18:30, 화·목 09:00 - 20:00 야간진료, 수 09:00 - 13:00, 토 09:00 - 16:00, 일요일 휴진<br>점심시간 평일 13:00 - 14:00</p></div>
         </div>
     </footer>
 
