@@ -1,0 +1,5 @@
+- Provide code explanations and summaries strictly in Korean.
+- Optimize for minimum token consumption: Keep all Korean explanations under 2 sentences.
+- Skip all greetings, polite expressions, apologies, and conversational fillers.
+- Focus immediately on modifying the necessary files using tools.
+- Never output the full file content in the chat; only edit the exact lines needed.
