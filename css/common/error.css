@@ -1,9 +1,0 @@
-﻿.error-wrap {min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; background:radial-gradient(circle at 20% 20%, #dbeafe 0%, #e2e8f0 55%, #f8fafc 100%);} 
-.error-card {width:100%; max-width:640px; border:1px solid #cbd5e1; border-radius:20px; background:#fff; box-shadow:0 16px 30px rgba(15,23,42,.08); padding:30px;} 
-.error-code {font-size:44px; font-weight:900; color:#2563eb; margin:0 0 8px;} 
-.error-title {font-size:22px; font-weight:800; color:#0f172a; margin:0 0 8px;} 
-.error-desc {font-size:15px; color:#475569; line-height:1.6; margin:0 0 20px;} 
-.error-actions {display:flex; gap:10px; flex-wrap:wrap;} 
-.error-btn {display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700;} 
-.error-btn.primary {background:#2563eb; color:#fff;} 
-.error-btn.ghost {background:#eff6ff; color:#1e40af;} 
