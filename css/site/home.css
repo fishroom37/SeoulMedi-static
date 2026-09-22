@@ -1,0 +1,736 @@
+.home-popup-counter {
+    min-width: 60px;
+    color: #5f6c63;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+}
+
+/* ===== 홈 히어로(에디토리얼/시그니처) ===== */
+.hero {
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 104px 0 54px;
+    color: #ffffff;
+    overflow: hidden;
+    background-color: var(--brand-deep);
+    background-image:
+        linear-gradient(105deg, rgba(10, 30, 25, 0.95) 0%, rgba(16, 39, 31, 0.85) 46%, rgba(14, 36, 53, 0.62) 100%),
+        var(--signature-bg);
+    background-position: center;
+    background-size: cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(48vw, 680px);
+    background-image:
+        linear-gradient(90deg, rgba(16, 39, 31, 0.38), rgba(16, 39, 31, 0.06)),
+        url("../../images/site/iseoul/reception.jpg");
+    background-position: center;
+    background-size: cover;
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 0.86;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: end;
+    gap: 44px;
+}
+
+.hero-copy {
+    max-width: 760px;
+    animation: riseIn 0.65s ease both;
+}
+
+.hero-title-logo {
+    width: clamp(280px, 42vw, 560px);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding: clamp(14px, 2vw, 22px);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 24px 62px rgba(3, 15, 12, 0.18);
+}
+
+.hero-name-text {
+    margin: 16px 0 0;
+    color: #f7fbf7;
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 18px;
+    padding: 7px 12px;
+    border-left: 3px solid var(--gold);
+    background: rgba(255, 255, 255, 0.13);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.hero-lead {
+    margin: 18px 0 0;
+    font-size: clamp(22px, 2.8vw, 34px);
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    margin: 16px 0 0;
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.84);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 18px;
+}
+
+.hero-subtitle p {
+    margin: 10px 0 0;
+}
+
+.hero-subtitle p:first-child {
+    margin-top: 0;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero .btn-outline {
+    border-color: rgba(255, 255, 255, 0.52);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.hero.hero-signature {
+    min-height: calc(100vh - 162px);
+    padding: 0;
+    align-items: stretch;
+    background-image:
+        linear-gradient(90deg, rgba(7, 23, 19, 0.74) 0%, rgba(7, 23, 19, 0.45) 42%, rgba(7, 23, 19, 0.1) 100%),
+        url("../../images/site/iseoul/lounge.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.hero.hero-signature::after {
+    display: none;
+}
+
+.hero-clean-inner {
+    min-height: calc(100vh - 162px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: clamp(48px, 7vw, 96px) 0;
+}
+
+.hero-home-copy {
+    width: min(660px, 92vw);
+    color: #ffffff;
+    text-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+    animation: riseIn 0.72s ease both;
+}
+
+.hero-menu-tabs {
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+}
+
+.hero-menu-tabs-inner {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+}
+
+.hero-menu-tabs a {
+    position: relative;
+    padding: 14px 2px;
+    color: #4a5c51;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 800;
+}
+
+/* ===== 메인 히어로(에디토리얼 그리드 + 이미지 슬라이드) ===== */
+.hero.hero-editorial {
+    position: relative;
+    min-height: calc(100vh - 92px);
+    display: block;
+    padding: 0;
+    background:
+        linear-gradient(120deg, rgba(9, 27, 22, 0.97) 0%, rgba(14, 34, 42, 0.92) 100%);
+}
+
+.hero.hero-editorial::after {
+    display: none;
+}
+
+.hero-editorial-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: stretch;
+    min-height: calc(100vh - 92px);
+}
+
+.hero-visual-motion {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    background: #0d1f1a;
+}
+
+.hero-visual-slide {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    animation: heroSlideFade 24s ease-in-out infinite;
+}
+
+.hero-visual-slide-1 {
+    background-image: url("../../images/site/iseoul/reception.jpg");
+    animation-delay: 0s;
+}
+
+.hero-visual-slide-2 {
+    background-image: url("../../images/site/iseoul/treatment-room-2.jpg");
+    animation-delay: 6s;
+}
+
+.hero-visual-slide-3 {
+    background-image: url("../../images/site/iseoul/lounge.jpg");
+    animation-delay: 12s;
+}
+
+.hero-visual-slide-4 {
+    background-image: url("../../images/site/iseoul/bed-double.jpg");
+    animation-delay: 18s;
+}
+
+.hero-visual-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 26px 30px;
+    background: linear-gradient(0deg, rgba(7, 20, 16, 0.86), rgba(7, 20, 16, 0));
+    color: #ffffff;
+}
+
+.hero-visual-caption strong {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.hero-visual-caption span {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 14px;
+}
+
+.hero-editorial-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: clamp(40px, 6vw, 84px) clamp(28px, 5vw, 72px);
+    color: #ffffff;
+    animation: riseIn 0.72s ease both;
+}
+
+.hero-page-count {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    color: var(--gold);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 900;
+}
+
+.hero-page-count strong {
+    font-size: 30px;
+}
+
+.hero-page-count em {
+    font-size: 15px;
+    font-style: normal;
+    opacity: 0.7;
+}
+
+.hero-editorial-copy h1 {
+    margin: 6px 0 0;
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: 1.16;
+}
+
+.hero-home-lead {
+    margin: 6px 0 0;
+    max-width: 620px;
+    color: rgba(255, 255, 255, 0.84);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.hero-care-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.hero-care-keywords span {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+@keyframes heroSlideFade {
+    0% { opacity: 0; }
+    3% { opacity: 1; }
+    25% { opacity: 1; }
+    28% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@media (max-width: 1080px) {
+    .hero-editorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual-motion {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero.hero-editorial,
+    .hero-editorial-grid {
+        min-height: auto;
+    }
+
+    .hero-visual-motion {
+        min-height: 240px;
+    }
+
+    .hero-editorial-copy {
+        padding: 40px 22px 48px;
+    }
+}
+
+/* ===== 메인 진료 메뉴 카드 ===== */
+.home-care-menu {
+    padding: 72px 0 10px;
+}
+
+.home-care-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.home-care-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 220px;
+    padding: 26px 22px 24px;
+    border: 1px solid rgba(37, 91, 73, 0.14);
+    border-top: 4px solid var(--brand);
+    background: #ffffff;
+    box-shadow: 0 16px 34px rgba(14, 36, 53, 0.08);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.home-care-card:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--accent);
+    box-shadow: 0 24px 46px rgba(14, 36, 53, 0.14);
+}
+
+.home-care-card h3 {
+    margin: 0;
+    color: #12372d;
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.home-care-card p {
+    margin: 0;
+    color: #5a6b62;
+    flex-grow: 1;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.home-care-card span {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 4px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+}
+
+.home-care-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.home-care-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(37, 91, 73, 0.2);
+    border-radius: 999px;
+    background: #f8fbf8;
+    color: #1a4034;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.home-care-links a:hover {
+    background: #255b49;
+    color: #ffffff;
+}
+
+.scroll-story-section {
+    padding: 66px 0 22px;
+}
+
+.scroll-story-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.scroll-story-card {
+    overflow: hidden;
+    border: 1px solid rgba(37, 91, 73, 0.14);
+    background: #ffffff;
+    box-shadow: 0 18px 38px rgba(14, 36, 53, 0.09);
+}
+
+.scroll-story-card img {
+    width: 100%;
+    height: min(38vw, 280px);
+    min-height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.scroll-story-card > div {
+    padding: 18px 16px 20px;
+}
+
+.scroll-story-card h3 {
+    margin: 0;
+    color: #112f27;
+    font-size: 22px;
+}
+
+.scroll-story-card p {
+    margin: 8px 0 0;
+    color: #566760;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    line-height: 1.62;
+}
+
+/* ===== 방문 정보 섹션 ===== */
+.clinic-info-section {
+    padding: 62px 0 18px;
+    background:
+        linear-gradient(180deg, rgba(247, 250, 246, 0.98), rgba(238, 246, 239, 0.98)),
+        var(--signature-bg) center / 1500px auto;
+}
+
+.clinic-info-head {
+    margin-bottom: 28px;
+}
+
+.clinic-info-layout {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.clinic-overview-card,
+.clinic-info-card,
+.clinic-contact-card {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(20, 37, 31, 0.08);
+}
+
+.clinic-overview-card {
+    grid-column: span 5;
+}
+
+.clinic-info-card {
+    grid-column: span 3;
+}
+
+.clinic-info-card:nth-of-type(3) {
+    grid-column: span 4;
+}
+
+.clinic-brand-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.clinic-logo-image {
+    width: min(230px, 100%);
+    height: auto;
+    display: block;
+}
+
+.clinic-info-card h3 {
+    margin: 0 0 18px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+    font-size: 23px;
+}
+
+.clinic-contact-card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 22px 40px;
+    background: linear-gradient(180deg, #173128 0%, #101713 100%);
+    color: #ffffff;
+}
+
+.clinic-contact-label {
+    color: var(--gold);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.clinic-contact-card strong {
+    display: block;
+    margin-top: 6px;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.05;
+}
+
+.clinic-contact-card > p {
+    margin: 4px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.clinic-rich-content {
+    color: #4f5f54;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.clinic-rich-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.clinic-rich-content p,
+.clinic-rich-content ul,
+.clinic-rich-content ol,
+.clinic-rich-content figure {
+    margin: 12px 0 0;
+}
+
+.clinic-rich-content p:first-child,
+.clinic-rich-content ul:first-child,
+.clinic-rich-content ol:first-child {
+    margin-top: 0;
+}
+
+.clinic-rich-content ul,
+.clinic-rich-content ol {
+    padding-left: 20px;
+}
+
+.clinic-contact-card .clinic-rich-content {
+    margin-top: 0;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.clinic-contact-card .clinic-rich-content > p:first-child {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.clinic-contact-card .clinic-rich-content ul {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.clinic-contact-card .clinic-rich-content li {
+    position: relative;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 15px;
+}
+
+.clinic-contact-card .clinic-rich-content li + li {
+    margin-top: 8px;
+}
+
+.clinic-contact-card .clinic-rich-content li::before {
+    content: "";
+    position: absolute;
+    top: 0.66em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+/* ===== 홈 전용 반응형 ===== */
+@media (max-width: 1080px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 84px 0 42px;
+    }
+
+    .home-care-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 64px 0 34px;
+        background-position: 62% center;
+    }
+
+    .hero::after {
+        width: 100%;
+        opacity: 0.22;
+        clip-path: none;
+    }
+
+    .hero-title-logo {
+        width: min(100%, 420px);
+    }
+
+    .hero-lead {
+        font-size: 24px;
+    }
+
+    .hero-menu-tabs-inner {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        min-height: 62px;
+    }
+
+    .hero-menu-tabs a {
+        flex: 0 0 auto;
+    }
+
+    .home-care-grid,
+    .scroll-story-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clinic-overview-card,
+    .clinic-info-card,
+    .clinic-info-card:nth-of-type(3) {
+        grid-column: 1 / -1;
+    }
+
+    .clinic-contact-card {
+        grid-template-columns: 1fr;
+    }
+
+    .home-popup-overlay {
+        padding: 16px;
+    }
+
+    .home-popup-card {
+        width: min(var(--popup-max-width), calc(100vw - 16px));
+        border-radius: 14px;
+    }
+
+    .home-popup-close {
+        top: 12px;
+        right: 12px;
+    }
+
+    .home-popup-image {
+        max-height: 220px;
+    }
+
+    .home-popup-body {
+        padding: 26px 20px 18px;
+    }
+
+    .home-popup-footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 20px 20px;
+    }
+
+    .home-popup-footer-actions {
+        justify-content: space-between;
+    }
+}

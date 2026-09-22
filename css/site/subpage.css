@@ -1,0 +1,724 @@
+/* =========================================================
+ * subpage.css — 하위 페이지(클리닉/안내) 전용 스타일
+ *  (페이지 헤더, 좌측 사이드바, 본문, 지도, 리스트, 트리 등)
+ * ========================================================= */
+
+/* ===== 페이지 헤더 ===== */
+.page-header {
+    padding: 60px 0 44px;
+    color: #ffffff;
+    background:
+        linear-gradient(100deg, rgba(16, 39, 31, 0.94), rgba(14, 36, 53, 0.72)),
+        var(--signature-bg) center / cover;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: clamp(32px, 4.6vw, 52px);
+    line-height: 1.15;
+}
+
+.page-header p {
+    margin: 14px 0 0;
+    max-width: 720px;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 17px;
+}
+
+/* ===== 본문 레이아웃(좌측 사이드바 + 본문) ===== */
+.page-container {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 42px 0 64px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+}
+
+.page-sidebar {
+    position: sticky;
+    top: 116px;
+    align-self: start;
+    height: fit-content;
+    padding: 24px 22px 26px;
+    background:
+        linear-gradient(180deg, rgba(16, 39, 31, 0.97), rgba(14, 36, 53, 0.96)),
+        var(--signature-bg) center / cover;
+    color: #ffffff;
+    box-shadow: 0 22px 48px rgba(14, 36, 53, 0.16);
+}
+
+.page-sidebar .sidebar-title {
+    display: block;
+    margin: 0 0 6px;
+    color: var(--gold);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.page-sidebar h2 {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 23px;
+}
+
+.page-sidebar ul {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-sidebar li {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-sidebar li:first-child {
+    border-top: 0;
+}
+
+.page-sidebar li a {
+    position: relative;
+    display: block;
+    padding: 13px 14px;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.page-sidebar li a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(3px);
+}
+
+.page-sidebar li a.active {
+    color: #ffffff;
+    background: var(--accent);
+    font-weight: 800;
+    transform: none;
+}
+
+.page-content {
+    min-height: 300px;
+    padding: 36px 38px 44px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 24px 58px rgba(14, 36, 53, 0.1);
+}
+
+.page-content > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 26px;
+    object-fit: cover;
+}
+
+/* ===== 페이지 본문 박스(2차 레이아웃) ===== */
+.page-main {
+    padding: 48px 0 66px;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.page-sidebar a {
+    display: block;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 700;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.page-sidebar a:hover,
+.page-sidebar a.active {
+    padding-left: 18px;
+    background: var(--brand-soft);
+    color: var(--brand);
+}
+
+.page-sidebar small {
+    display: block;
+    padding: 16px 14px 0;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+
+.page-article {
+    padding: 34px 32px 40px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(37, 91, 73, 0.1);
+    box-shadow: 0 22px 52px rgba(14, 36, 53, 0.09);
+}
+
+.article-hero {
+    padding: 30px 0 24px;
+    border-bottom: 1px solid var(--line);
+}
+
+.article-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.article-hero h1 {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 46px);
+}
+
+.article-hero p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+/* ===== 본문 콘텐츠 영역 ===== */
+.article-content {
+    padding: 26px 0 0;
+}
+
+.article-content > *:first-child {
+    margin-top: 0;
+}
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+    margin-top: 34px;
+    color: var(--brand-deep);
+}
+
+.article-content h2 {
+    font-size: 28px;
+}
+
+.article-content h3 {
+    font-size: 23px;
+}
+
+.article-content h4 {
+    font-size: 18px;
+}
+
+.article-content p,
+.article-content li {
+    color: #445349;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px;
+}
+
+.article-content blockquote {
+    margin: 22px 0;
+    padding: 18px 22px;
+    border-left: 5px solid var(--accent);
+    background: #f4f8f4;
+    color: #33463d;
+    font-style: normal;
+}
+
+.article-content blockquote p {
+    margin: 0;
+}
+
+.article-content table {
+    width: 100%;
+    margin: 22px 0;
+    border-collapse: collapse;
+}
+
+.article-content td {
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    font-size: 15px;
+}
+
+.article-content a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* ===== 사진/이미지 블록 ===== */
+.content-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0 20px;
+}
+
+.content-photo-grid.three-column {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.content-photo {
+    margin: 20px 0;
+}
+
+.content-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0;
+    object-fit: cover;
+}
+
+.content-photo-grid .content-photo img,
+.content-photo-grid.three-column .content-photo img {
+    border-radius: 6px;
+}
+
+.content-photo figcaption {
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: #f6f8f7;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ===== 본문 서브 블록 ===== */
+.article-block {
+    margin: 12px 0 30px;
+}
+
+.article-block:first-child {
+    margin-top: 0;
+}
+
+.article-block h3 {
+    margin: 0;
+    font-size: clamp(21px, 2.6vw, 27px);
+    line-height: 1.3;
+}
+
+.article-block p {
+    margin: 12px 0 0;
+    color: #4d5c53;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 17px;
+}
+
+.article-block ul,
+.article-block ol {
+    margin: 14px 0 0;
+    padding-left: 22px;
+}
+
+.article-block li {
+    margin-top: 8px;
+    color: #4d5c53;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px;
+}
+
+.article-block li strong {
+    color: var(--brand);
+}
+
+/* ===== 체크 리스트 / 안내 ===== */
+.content-check-list {
+    margin: 14px 0 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.content-check-list li {
+    position: relative;
+    padding-left: 24px;
+    color: #4b574f;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px;
+}
+
+.content-check-list li + li {
+    margin-top: 8px;
+}
+
+.content-check-list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--brand);
+    font-weight: 900;
+}
+
+.content-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #f6f9f6;
+    border-left: 4px solid var(--brand);
+    color: #4a5b52;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+/* ===== 진료 시간 표 ===== */
+.hours-table {
+    margin-top: 18px;
+}
+
+.hours-table > div {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 12px 14px;
+    background: #f7faf7;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.hours-table > div + div {
+    margin-top: 6px;
+}
+
+.hours-table strong {
+    color: var(--brand);
+}
+
+/* ===== 지도(클리닉) ===== */
+.clinic-map {
+    position: relative;
+    margin-top: 20px;
+    border: 1px solid var(--line);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 248, 244, 0.96)),
+        var(--signature-bg) center / cover;
+}
+
+.clinic-map iframe {
+    width: 100%;
+    min-height: 280px;
+    border: 0;
+    display: block;
+}
+
+.clinic-map-pin {
+    position: relative;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.92);
+    border-top: 1px solid var(--line);
+    text-align: center;
+}
+
+.clinic-map-pin::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(23, 76, 99, 0.16);
+}
+
+.clinic-map-pin strong {
+    margin-right: 8px;
+    color: var(--brand-deep);
+}
+
+.clinic-map-pin span {
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 14px;
+}
+
+.clinic-map-fallback {
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(160deg, #eef4ee, #dfe9e0),
+        var(--signature-bg) center / cover;
+    overflow: hidden;
+}
+
+.clinic-map-fallback::before {
+    content: "지도 영역";
+    color: #7c8a80;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 800;
+}
+
+.clinic-map-canvas {
+    width: 100%;
+    min-height: 280px;
+}
+
+.clinic-map-canvas:empty {
+    min-height: 0;
+}
+
+.clinic-map.is-api-ready .clinic-map-canvas {
+    display: block;
+}
+
+.clinic-map.is-api-ready .clinic-map-fallback {
+    display: none;
+}
+
+.clinic-map-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.clinic-map-actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(37, 91, 73, 0.2);
+    border-radius: 999px;
+    background: #f8fbf8;
+    color: #1a4034;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.clinic-map-actions a:hover {
+    background: #255b49;
+    color: #ffffff;
+}
+
+.clinic-map-guide {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+
+/* ===== 카카오 지도 퍼가기(roughmap) ===== */
+.map-embed {
+    position: relative;
+    margin: 0 0 26px;
+    overflow: hidden;
+}
+
+.map-embed .root_daum_roughmap,
+.map-embed .root_daum_roughmap_landing {
+    width: 100% !important;
+}
+
+/* ===== 리스트형 게시판 ===== */
+.list-section {
+    margin-top: 22px;
+}
+
+.list-table {
+    border-top: 2px solid var(--brand);
+}
+
+.list-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 130px;
+    gap: 12px;
+    padding: 16px 6px;
+    border-bottom: 1px solid var(--line);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.list-row:last-child {
+    border-bottom: 0;
+}
+
+.list-head {
+    font-weight: 900;
+    color: var(--muted);
+    background: #f6f9f6;
+}
+
+.list-row a {
+    font-weight: 700;
+}
+
+.storage-hint {
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+
+/* ===== 메뉴 트리 / 안내 카드 ===== */
+.menu-tree-section {
+    padding: 52px 0 16px;
+}
+
+.menu-tree-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 26px;
+}
+
+.child-card {
+    padding: 22px 22px 24px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(37, 91, 73, 0.14);
+    box-shadow: 0 18px 44px rgba(14, 36, 53, 0.08);
+}
+
+.child-card h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.menu-tree-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.badge-level {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.menu-branch-link {
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.subnav-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 26px;
+}
+
+.subnav-chips a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid rgba(37, 91, 73, 0.2);
+    border-radius: 999px;
+    background: #f8fbf8;
+    color: #1a4034;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.subnav-chips a.active,
+.subnav-chips a:hover {
+    background: #255b49;
+    color: #ffffff;
+}
+
+.page-path {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+
+.page-path a {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.child-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.child-card p {
+    margin: 10px 0 0;
+    color: #55665d;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.child-card a {
+    display: inline-flex;
+    margin-top: 14px;
+    color: var(--accent);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 900;
+}
+
+/* ===== 하위 페이지 반응형 ===== */
+@media (max-width: 980px) {
+    .page-container {
+        width: min(1200px, calc(100% - 24px));
+        grid-template-columns: 1fr;
+        padding: 30px 0 48px;
+    }
+
+    .page-sidebar {
+        position: static;
+    }
+
+    .page-content {
+        padding: 26px 22px 32px;
+    }
+}
+
+@media (max-width: 920px) {
+    .menu-tree-grid,
+    .child-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-article {
+        padding: 26px 20px 32px;
+    }
+
+    .content-photo-grid,
+    .content-photo-grid.three-column {
+        grid-template-columns: 1fr;
+    }
+
+    .list-row {
+        grid-template-columns: 70px 1fr;
+    }
+}

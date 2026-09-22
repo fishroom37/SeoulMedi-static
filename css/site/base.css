@@ -1,0 +1,631 @@
+/* =========================================================
+ * base.css — 사이트 전체 공통 스타일
+ *  (변수, reset, 레이아웃, 헤더/네비, 푸터, 버튼, 테마, 애니메이션)
+ * ========================================================= */
+
+:root {
+    --bg: #f6f9f5;
+    --panel: #ffffff;
+    --text: #13231e;
+    --muted: #64746b;
+    --line: #dde6df;
+    --brand: #255b49;
+    --brand-deep: #10271f;
+    --brand-ink: #0e2435;
+    --brand-soft: #e8f2ea;
+    --accent: #174c63;
+    --accent-soft: #e6f0f2;
+    --gold: #bfa96e;
+    --ok: #2f735a;
+    --signature-bg: url("../../images/site/iseoul/bg-signature.svg");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Noto Serif KR", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    color: var(--text);
+    background:
+        linear-gradient(180deg, rgba(246, 249, 245, 0.94), rgba(246, 249, 245, 0.98)),
+        var(--signature-bg) center top / 1800px auto fixed;
+    line-height: 1.62;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-container {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 30px rgba(14, 36, 53, 0.08);
+    backdrop-filter: blur(14px);
+}
+
+.site-topbar {
+    background: linear-gradient(90deg, var(--brand-deep), var(--brand-ink));
+    color: #dce8dd;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 13px;
+}
+
+.topbar-inner {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 5px rgba(215, 180, 106, 0.18);
+}
+
+.top-link {
+    padding: 5px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.top-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.38);
+}
+
+.top-link.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+.brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 22px;
+    padding: 16px 0 14px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-logo-only {
+    width: fit-content;
+}
+
+.brand-logo-image {
+    width: clamp(220px, 24vw, 360px);
+    height: auto;
+    display: block;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.site-nav {
+    border-top: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.nav-list {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 0;
+}
+
+.nav-item-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-item {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 3px solid transparent;
+    color: #26382f;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active,
+.nav-item-group.current .nav-item,
+.nav-item-group:hover .nav-item,
+.nav-item-group:focus-within .nav-item {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: #fbfaf6;
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% - 4px);
+    left: 0;
+    min-width: 280px;
+    display: grid;
+    gap: 1px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    background: rgba(18, 31, 25, 0.97);
+    box-shadow: 0 22px 42px rgba(16, 23, 20, 0.2);
+    transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+    z-index: 8;
+}
+
+.nav-item-group:hover .nav-dropdown,
+.nav-item-group:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-item {
+    display: grid;
+    gap: 6px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-dropdown-item:hover,
+.nav-dropdown-item.active {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(2px);
+}
+
+.nav-dropdown-item strong {
+    font-size: 15px;
+}
+
+.nav-dropdown-item span {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.btn-primary,
+.btn-outline,
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.btn-outline {
+    border: 1px solid var(--line);
+    background: #ffffff;
+    color: var(--brand);
+}
+
+.btn-danger {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.section-head {
+    max-width: 760px;
+}
+
+.section-head > span,
+.philosophy-copy > span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 12px;
+}
+
+.section-head h2 {
+    margin: 0;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.15;
+}
+
+.section-head p {
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 17px;
+}
+
+.site-footer {
+    background: #101713;
+    color: #aebcaf;
+}
+
+.footer-inner {
+    padding: 30px 0 38px;
+}
+
+.footer-inner p {
+    margin: 8px 0 0;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.footer-hours {
+    margin-top: 8px;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.footer-hours p {
+    margin: 6px 0 0;
+}
+
+/* ===== 테마(다크) 공통 ===== */
+.site-body {
+    transition: background-color 0.24s ease, color 0.24s ease;
+}
+
+.site-body.theme-dark {
+    --bg: #071713;
+    --panel: #0e211b;
+    --text: #edf6f1;
+    --muted: #b6c6bd;
+    --line: rgba(231, 242, 235, 0.16);
+    --brand: #8dc9a7;
+    --brand-deep: #05100d;
+    --brand-ink: #071c2c;
+    --brand-soft: rgba(141, 201, 167, 0.14);
+    --accent: #d8c08a;
+    background:
+        linear-gradient(180deg, rgba(7, 23, 19, 0.97), rgba(8, 25, 32, 0.98)),
+        var(--signature-bg) center top / 1800px auto fixed;
+}
+
+.site-utility {
+    border-bottom: 1px solid rgba(16, 39, 31, 0.08);
+    background: #f7faf6;
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.utility-inner {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.utility-status-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.utility-pill,
+.utility-text {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.utility-pill {
+    padding: 4px 10px;
+    border: 1px solid rgba(37, 91, 73, 0.16);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--brand);
+}
+
+.utility-pill.closed {
+    color: #9b593f;
+    border-color: rgba(155, 89, 63, 0.2);
+}
+
+.utility-text {
+    color: #53675b;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    padding: 5px 11px;
+    border: 1px solid rgba(16, 39, 31, 0.18);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--brand-deep);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.theme-toggle-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, var(--brand) 0 50%, var(--brand-ink) 50% 100%);
+}
+
+.brand-row-centered {
+    justify-content: center;
+    padding: 18px 0 16px;
+}
+
+.brand-row-centered .brand-logo-image {
+    width: clamp(230px, 22vw, 340px);
+    opacity: 0.92;
+}
+
+.nav-list-balanced {
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 2px;
+}
+
+.nav-menu-button,
+.nav-login-link {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: #4d5d53;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.nav-login-link {
+    font-size: 28px;
+    color: var(--accent);
+}
+
+.site-body.theme-dark .site-header,
+.site-body.theme-dark .site-nav,
+.site-body.theme-dark .hero-menu-tabs,
+.site-body.theme-dark .clinic-overview-card,
+.site-body.theme-dark .clinic-info-card,
+.site-body.theme-dark .content-photo,
+.site-body.theme-dark .facility-card,
+.site-body.theme-dark .menu-tree-card,
+.site-body.theme-dark .child-card,
+.site-body.theme-dark .highlight-card,
+.site-body.theme-dark .service-card {
+    background: rgba(14, 33, 27, 0.94);
+    color: var(--text);
+    border-color: var(--line);
+}
+
+.site-body.theme-dark .site-utility {
+    background: #06110e;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-body.theme-dark .utility-pill,
+.site-body.theme-dark .theme-toggle {
+    background: rgba(255, 255, 255, 0.06);
+    color: #e9f5ee;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.site-body.theme-dark .utility-text,
+.site-body.theme-dark .nav-menu-button,
+.site-body.theme-dark .hero-menu-tabs a,
+.site-body.theme-dark .section-head p,
+.site-body.theme-dark .article-content p,
+.site-body.theme-dark .article-block p,
+.site-body.theme-dark .content-photo figcaption,
+.site-body.theme-dark .facility-card figcaption {
+    color: var(--muted);
+}
+
+.site-body.theme-dark .brand-row,
+.site-body.theme-dark .site-nav {
+    background: rgba(7, 23, 19, 0.88);
+}
+
+.site-body.theme-dark .content-photo figcaption,
+.site-body.theme-dark .facility-card figcaption,
+.site-body.theme-dark .hours-table > div {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.site-body.theme-dark .clinic-info-section,
+.site-body.theme-dark .service-board {
+    background:
+        linear-gradient(180deg, rgba(7, 23, 19, 0.98), rgba(7, 25, 32, 0.98)),
+        var(--signature-bg) center / 1500px auto;
+}
+
+.site-body.theme-dark .clinic-map-pin {
+    background: rgba(7, 23, 19, 0.92);
+}
+
+.site-body.theme-dark .clinic-map-pin strong {
+    color: #f1fbf5;
+}
+
+.site-body.theme-dark .brand-logo-image,
+.site-body.theme-dark .clinic-logo-image {
+    filter: brightness(1.12) saturate(0.8);
+}
+
+/* ===== 스크롤 리빌 애니메이션 ===== */
+.reveal-target {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.72s ease var(--reveal-delay, 0ms),
+        transform 0.72s ease var(--reveal-delay, 0ms);
+}
+
+.reveal-target.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-main-logo {
+        animation: none;
+    }
+
+    .reveal-target {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== 공통 반응형 ===== */
+@media (max-width: 1080px) {
+    .hero-inner,
+    .page-grid,
+    .philosophy-inner,
+    .director-card {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-menu-inner {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .clinic-info-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facility-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facility-card-wide {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-container {
+        width: min(1200px, calc(100% - 24px));
+    }
+
+    .topbar-inner,
+    .brand-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .topbar-right {
+        flex-wrap: wrap;
+    }
+
+    .brand-logo-image {
+        width: min(300px, 82vw);
+    }
+
+    .nav-list {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .nav-item-group {
+        flex: 0 0 auto;
+    }
+
+    .nav-item {
+        flex: 0 0 auto;
+    }
+
+    .nav-dropdown {
+        display: none;
+    }
+
+    .highlights,
+    .clinic-info-layout,
+    .service-grid,
+    .facility-grid,
+    .cms-grid.two,
+    .cms-grid.three {
+        grid-template-columns: 1fr;
+    }
+}

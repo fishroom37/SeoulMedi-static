@@ -42,8 +42,26 @@
                     </ul>
                 </nav>
             </aside>
-            <article class="page-content">
-                <div class="map-embed" id="kakao-map"></div><section class="article-block"><h3>주소 안내</h3><p>대구광역시 수성구 교학로 13, 만촌3차 화성파크드림 상가동 201호</p><p>지하철 2호선 담티역 2번 출구에서 약 250m 거리에 있습니다.</p></section><section class="article-block"><h3>대중교통</h3><ul class="content-check-list"><li>309, 349, 509, 609, 840, 937, 990번: 담티역 하차 후 농협 맞은편 길 방향 약 200m</li><li>234, 425번: 만촌3차화성파크드림 건너 하차 후 길 건너편</li></ul></section>
+                        <article class="page-content">
+                <div class="map-embed">
+                    <!-- * 카카오맵 - 지도퍼가기 -->
+                    <!-- 1. 지도 노드 -->
+                    <div id="daumRoughmapContainer1790041579849" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                    <!--
+                    2. 설치 스크립트
+                    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                    -->
+                    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
+                    <!-- 3. 실행 스크립트 -->
+                    <script charset="UTF-8">
+                        new daum.roughmap.Lander({
+                            "timestamp": "1790041579849",
+                            "key": "v5ozhhpce6v",
+                            "mapWidth": "640",
+                            "mapHeight": "360"
+                        }).render();
+                    </script>
+                </div><section class="article-block"><h3>주소 안내</h3><p>대구광역시 수성구 교학로 13, 만촌3차 화성파크드림 상가동 201호</p><p>지하철 2호선 담티역 2번 출구에서 약 250m 거리에 있습니다.</p></section><section class="article-block"><h3>대중교통</h3><ul class="content-check-list"><li>309, 349, 509, 609, 840, 937, 990번: 담티역 하차 후 농협 맞은편 길 방향 약 200m</li><li>234, 425번: 만촌3차화성파크드림 건너 하차 후 길 건너편</li></ul></section>
             </article>
         </div>
     </main>
@@ -54,22 +72,22 @@
             <p>대구광역시 수성구 교학로 13, 만촌3차 화성파크드림 상가동 201호</p>
             <div class="footer-hours"><p>월·금 09:00 - 18:30, 화·목 09:00 - 20:00 야간진료, 수 09:00 - 13:00, 토 09:00 - 16:00, 일요일 휴진<br>점심시간 평일 13:00 - 14:00</p></div>
         </div>
-    </footer>
+    </footer>    <div class="quick-slot quick-channel-slot">
+        <button type="button" class="quick-slot-item" data-quick-channel="blog">
+            <strong>N</strong>
+            <span>Blog</span>
+        </button>
+        <button type="button" class="quick-slot-item" data-quick-channel="carrot">
+            <strong>D</strong>
+            <span>Daangn</span>
+        </button>
+        <button type="button" class="quick-slot-item quick-slot-accent" data-quick-channel="kakao">
+            <strong>K</strong>
+            <span>Kakao</span>
+        </button>
+    </div>
 
-    <script src="./js/site/site-motion.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_MAP_API_KEY"></script>
-    <script>
-        var mapContainer = document.getElementById('kakao-map'),
-            mapOption = { 
-                center: new kakao.maps.LatLng(35.8551, 128.6361),
-                level: 3
-            };
-        var map = new kakao.maps.Map(mapContainer, mapOption);
-        var markerPosition  = new kakao.maps.LatLng(35.8551, 128.6361); 
-        var marker = new kakao.maps.Marker({
-            position: markerPosition
-        });
-        marker.setMap(map);
-    </script>
+                <script src="./js/site/site-core.js"></script>
+    <script src="./js/site/subpage.js"></script>
 </body>
 </html>
