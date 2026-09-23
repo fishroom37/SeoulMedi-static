@@ -328,9 +328,10 @@
     }
 
             var channelLinks = {
-        blog: "https://blog.naver.com/iseoul23",
-        kakao: "https://pf.kakao.com/_iseoul"
-    };
+                blog: "https://blog.naver.com/iseoul23",
+                carrot: "https://www.daangn.com/kr/local-profile/%EC%95%84%EC%9D%B4%EC%84%9C%EC%9A%B8%ED%95%9C%EC%9D%98%EC%9B%90-uvt9iniwbgde/",
+                kakao: "https://pf.kakao.com/_ZexaxdX"
+            };
 
     slotButtons.forEach(function (button) {
         button.addEventListener("click", function () {

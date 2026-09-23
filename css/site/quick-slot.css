@@ -113,7 +113,39 @@
 
 .quick-channel-slot .quick-slot-item:hover {
     transform: translateX(-5px);
-    background: rgba(37, 91, 73, 0.94);
+}
+
+/* ===== 채널별 색상 ===== */
+.quick-channel-slot .quick-slot-item[data-quick-channel="blog"] {
+    background: #03c75a;
+    border-color: #03c75a;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="blog"]:hover {
+    background: #02b350;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="carrot"] {
+    background: #ff8a3d;
+    border-color: #ff8a3d;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="carrot"]:hover {
+    background: #f97316;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="kakao"] {
+    background: #fee500;
+    border-color: #fee500;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="kakao"]:hover {
+    background: #f5d900;
+}
+
+.quick-channel-slot .quick-slot-item[data-quick-channel="kakao"] strong,
+.quick-channel-slot .quick-slot-item[data-quick-channel="kakao"] span {
+    color: #3c1e1e;
 }
 
 @media (max-width: 860px) {
