@@ -5,11 +5,18 @@
 
 /* ===== 페이지 헤더 ===== */
 .page-header {
-    padding: 60px 0 44px;
+    padding: 60px max(24px, calc((100% - 1180px) / 2)) 44px;
     color: #ffffff;
     background:
         linear-gradient(100deg, rgba(16, 39, 31, 0.94), rgba(14, 36, 53, 0.72)),
         var(--signature-bg) center / cover;
+}
+
+.page-header > .site-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: none;
 }
 
 .page-header h1 {
@@ -91,6 +98,11 @@
     font-weight: 600;
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* 사이드 메뉴 영문 라벨 숨김 */
+.page-sidebar li a span {
+    display: none;
 }
 
 .page-sidebar li a:hover {

@@ -705,6 +705,7 @@
 }
 
 .clinic-main-menu > li.has-submenu > a {
+    position: relative;
     min-height: 92px;
     display: inline-flex;
     align-items: center;
@@ -714,10 +715,33 @@
     font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
     font-size: 15px;
     font-weight: 700;
+    transition: color 0.2s ease;
 }
 
-.clinic-main-menu > li.has-submenu:focus-within > a {
+.clinic-main-menu > li.has-submenu > a::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 24px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s ease;
+}
+
+.clinic-main-menu > li.has-submenu:hover > a,
+.clinic-main-menu > li.has-submenu:focus-within > a,
+.clinic-main-menu > li.has-submenu > a.active {
     color: var(--accent);
+}
+
+.clinic-main-menu > li.has-submenu:hover > a::after,
+.clinic-main-menu > li.has-submenu:focus-within > a::after,
+.clinic-main-menu > li.has-submenu > a.active::after {
+    transform: scaleX(1);
 }
 
 .clinic-submenu {

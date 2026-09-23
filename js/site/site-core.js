@@ -327,17 +327,20 @@
         return;
     }
 
-    var channelNames = {
-        blog: "네이버 블로그",
-        carrot: "당근마켓",
-        kakao: "카카오톡"
+            var channelLinks = {
+        blog: "https://blog.naver.com/iseoul23",
+        kakao: "https://pf.kakao.com/_iseoul"
     };
 
     slotButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             var key = button.getAttribute("data-quick-channel") || "";
-            var name = channelNames[key] || "해당 서비스";
-            window.alert(name + " 바로가기를 준비 중입니다.");
+            var url = channelLinks[key];
+            if (url) {
+                window.open(url, "_blank", "noopener");
+                return;
+            }
+            window.alert("해당 서비스 바로가기를 준비 중입니다.");
         });
     });
 })();
