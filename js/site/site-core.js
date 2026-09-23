@@ -1,4 +1,5 @@
-/* =========================================================
+
+ /* =========================================================
  * 사이트 공통 스크립트 (모든 페이지에서 로드)
  *  - 스크롤 리빌 애니메이션
  *  - 테마(다크/라이트) 토글
@@ -7,8 +8,6 @@
  *  - 상단 대메뉴 드롭다운 접근성
  *  - 우측 하단 플로팅 퀵슬롯
  * ========================================================= */
-
-/* ===== 스크롤 진입 시 요소 나타나기 ===== */
 (function () {
     var selector = [
         ".philosophy-opening",
@@ -289,6 +288,17 @@
             closeAll(item);
         });
 
+        if (link) {
+            link.addEventListener("click", function (event) {
+                if (window.matchMedia("(max-width: 980px)").matches) {
+                    event.preventDefault();
+                    var willOpen = !item.classList.contains("is-submenu-open");
+                    closeAll(item);
+                    item.classList.toggle("is-submenu-open", willOpen);
+                    link.setAttribute("aria-expanded", willOpen ? "true" : "false");
+                }
+            });        }
+
         item.addEventListener("focusin", function () {
             closeAll(item);
             item.classList.add("is-submenu-open");
@@ -327,11 +337,11 @@
         return;
     }
 
-            var channelLinks = {
-                blog: "https://blog.naver.com/iseoul23",
-                carrot: "https://www.daangn.com/kr/local-profile/%EC%95%84%EC%9D%B4%EC%84%9C%EC%9A%B8%ED%95%9C%EC%9D%98%EC%9B%90-uvt9iniwbgde/",
-                kakao: "https://pf.kakao.com/_ZexaxdX"
-            };
+    var channelLinks = {
+        blog: "https://blog.naver.com/iseoul23",
+        carrot: "https://www.daangn.com/kr/local-profile/%EC%95%84%EC%9D%B4%EC%84%9C%EC%9A%B8%ED%95%9C%EC%9D%98%EC%9B%90-uvt9iniwbgde/",
+        kakao: "https://pf.kakao.com/_ZexaxdX"
+    };
 
     slotButtons.forEach(function (button) {
         button.addEventListener("click", function () {

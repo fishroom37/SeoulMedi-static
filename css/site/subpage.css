@@ -697,15 +697,74 @@
     .page-container {
         width: min(1200px, calc(100% - 24px));
         grid-template-columns: 1fr;
-        padding: 30px 0 48px;
+        padding: 24px 0 44px;
+        gap: 18px;
     }
 
     .page-sidebar {
         position: static;
+        top: auto;
     }
 
     .page-content {
-        padding: 26px 22px 32px;
+        padding: 24px 20px 30px;
+    }
+}
+
+@media (max-width: 620px) {
+    .page-header {
+        padding: 44px 20px 32px;
+    }
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+    .page-header p {
+        font-size: 15px;
+    }
+
+    .page-sidebar {
+        padding: 18px 16px 20px;
+    }
+
+    .page-sidebar h2 {
+        font-size: 19px;
+    }
+
+    .page-sidebar li a {
+        padding: 11px 10px;
+        font-size: 14px;
+    }
+
+    .page-content {
+        padding: 20px 16px 26px;
+    }
+
+    .content-photo-grid,
+    .content-photo-grid.three-column {
+        grid-template-columns: 1fr;
+    }
+
+    .article-block h3 {
+        font-size: 20px;
+    }
+
+    .article-block p,
+    .article-block li,
+    .content-check-list li {
+        font-size: 15px;
+    }
+
+    .hours-table > div {
+        grid-template-columns: 84px 1fr;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .clinic-map iframe,
+    .clinic-map-canvas {
+        min-height: 220px;
     }
 }
 
@@ -731,6 +790,7 @@
     }
 
     .list-row {
-        grid-template-columns: 70px 1fr;
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 }

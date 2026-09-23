@@ -345,11 +345,33 @@
     }
 
     .hero-visual-motion {
-        min-height: 240px;
+        min-height: 200px;
     }
 
     .hero-editorial-copy {
-        padding: 40px 22px 48px;
+        padding: 32px 20px 40px;
+        gap: 12px;
+    }
+
+    .hero-editorial-copy h1 {
+        font-size: 30px;
+    }
+
+    .hero-badge {
+        margin-bottom: 8px;
+    }
+
+    .hero-home-lead {
+        font-size: 15px;
+    }
+
+    .hero-care-keywords span {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .hero-actions {
+        gap: 10px;
     }
 }
 
@@ -724,7 +746,7 @@
         padding: 26px 20px 18px;
     }
 
-    .home-popup-footer {
+            .home-popup-footer {
         flex-direction: column;
         align-items: stretch;
         padding: 16px 20px 20px;
@@ -732,5 +754,50 @@
 
     .home-popup-footer-actions {
         justify-content: space-between;
+    }
+}
+
+@media (max-width: 620px) {
+    .home-care-menu {
+        padding: 48px 0 6px;
+    }
+
+    .home-care-card {
+        min-height: 0;
+        padding: 22px 18px 20px;
+    }
+
+    .home-care-card h3 {
+        font-size: 19px;
+    }
+
+    .scroll-story-section {
+        padding: 46px 0 16px;
+    }
+
+    .clinic-info-section {
+        padding: 44px 0 14px;
+    }
+
+    .clinic-info-layout {
+        gap: 14px;
+    }
+
+    .clinic-overview-card,
+    .clinic-info-card,
+    .clinic-contact-card {
+        padding: 20px 18px;
+    }
+
+    .clinic-contact-card strong {
+        font-size: 26px;
+    }
+
+    .section-head h2 {
+        font-size: 26px;
+    }
+
+    .section-head p {
+        font-size: 15px;
     }
 }
