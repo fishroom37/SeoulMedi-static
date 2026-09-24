@@ -2675,6 +2675,112 @@ a {
     min-height: auto;
 }
 
+.clinic-map-card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 18px;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(37, 91, 73, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(13, 38, 31, 0.08);
+}
+
+.clinic-map-embed {
+    position: relative;
+    min-height: 320px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--brand-soft, #eef4f0);
+}
+
+.clinic-map-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.clinic-map-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+}
+
+.clinic-map-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.clinic-map-pin {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--brand-soft, #eef4f0);
+    color: var(--brand, #255b49);
+}
+
+.clinic-map-pin svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.clinic-map-address p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #2c4a40;
+}
+
+.clinic-map-address strong {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 16px;
+    color: var(--brand-deep, #143a2d);
+}
+
+.clinic-map-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.clinic-map-actions .btn-primary,
+.clinic-map-actions .btn-outline {
+    flex: 1 1 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.site-body.theme-dark .clinic-map-card {
+    background: #12251d;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.site-body.theme-dark .clinic-map-address p {
+    color: #d7e6dd;
+}
+
+@media (max-width: 860px) {
+    .clinic-map-card {
+        grid-template-columns: 1fr;
+    }
+
+    .clinic-map-embed {
+        min-height: 260px;
+    }
+}
+
 .content-photo,
 .facility-card {
     border-color: rgba(37, 91, 73, 0.14);
