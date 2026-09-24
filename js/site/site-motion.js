@@ -361,3 +361,103 @@
     };
     document.head.appendChild(script);
 })();
+
+/* 헤더 드롭다운 + 모바일 햄버거 내비게이션 */
+(function () {
+    var header = document.querySelector(".clinic-header");
+    if (!header) {
+        return;
+    }
+    var row = header.querySelector(".clinic-header-row");
+    var nav = header.querySelector(".clinic-nav");
+    if (!row || !nav || row.querySelector(".nav-toggle")) {
+        return;
+    }
+
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "nav-toggle";
+    toggle.setAttribute("aria-label", "메뉴 열기");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+    row.appendChild(toggle);
+
+    function setOpen(open) {
+        document.body.classList.toggle("is-nav-open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    }
+
+    toggle.addEventListener("click", function () {
+        setOpen(!document.body.classList.contains("is-nav-open"));
+    });
+
+    var groups = Array.prototype.slice.call(nav.querySelectorAll(".has-submenu"));
+    groups.forEach(function (group) {
+        var sub = group.querySelector(".clinic-submenu");
+        if (!sub) {
+            return;
+        }
+        var expander = document.createElement("button");
+        expander.type = "button";
+        expander.className = "submenu-toggle";
+        expander.setAttribute("aria-label", "하위 메뉴 열기");
+        expander.setAttribute("aria-expanded", "false");
+        group.insertBefore(expander, sub);
+        expander.addEventListener("click", function () {
+            var opened = group.classList.toggle("is-open");
+            expander.setAttribute("aria-expanded", opened ? "true" : "false");
+        });
+    });
+
+    nav.addEventListener("click", function (event) {
+        if (event.target.closest && event.target.closest("a")) {
+            setOpen(false);
+        }
+    });
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            setOpen(false);
+        }
+    });
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 980) {
+            setOpen(false);
+        }
+    });
+})();
+
+/* 플로팅 빠른 상담 레일 (전화 · 오시는 길 · 진료시간 · 맨 위로) */
+(function () {
+    if (document.querySelector(".floating-quick")) {
+        return;
+    }
+
+    var phoneIcon = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z\"/></svg>";
+    var pinIcon = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2a7 7 0 0 0-7 7c0 4.7 7 13 7 13s7-8.3 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z\"/></svg>";
+    var clockIcon = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4 4 2.3-.9 1.6L11 13V6h2z\"/></svg>";
+    var topIcon = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8L6.4 13.4 5 12z\"/></svg>";
+
+    var rail = document.createElement("aside");
+    rail.className = "floating-quick";
+    rail.setAttribute("aria-label", "빠른 상담 메뉴");
+    rail.innerHTML = ""
+        + "<a class=\"fq-item fq-item-accent\" href=\"tel:0534251900\"><span class=\"fq-ico\">" + phoneIcon + "</span><em>전화상담</em></a>"
+        + "<a class=\"fq-item\" href=\"./page-location.html\"><span class=\"fq-ico\">" + pinIcon + "</span><em>오시는 길</em></a>"
+        + "<a class=\"fq-item\" href=\"./page-clinic-hours.html\"><span class=\"fq-ico\">" + clockIcon + "</span><em>진료시간</em></a>"
+        + "<button type=\"button\" class=\"fq-item fq-top\" data-quick-top><span class=\"fq-ico\">" + topIcon + "</span><em>맨 위로</em></button>";
+    document.body.appendChild(rail);
+
+    var topBtn = rail.querySelector("[data-quick-top]");
+    if (topBtn) {
+        topBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    function onScroll() {
+        rail.classList.toggle("fq-scrolled", window.scrollY > 320);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+})();
