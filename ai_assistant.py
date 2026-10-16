@@ -31,7 +31,7 @@ if len(rows) <= 1:
     print("확인할 작업 행이 없습니다.")
     exit(0)
 
-# 3. '대기' 상태인 작업 찾기 (A열: 상태, B: AI 질문, C: 요청 및 대답, D: 첨부자료, E: 결과 요약)
+# 3. '대기' 상태인 작업 찾기
 target_row_idx = None
 target_request = ""
 target_attachment = ""
@@ -56,7 +56,7 @@ core_js_path = "js/site/site-core.js"
 with open(core_js_path, "r", encoding="utf-8") as f:
     current_core_js = f.read()
 
-# 5. OpenRouter AI에게 수정 지시 (Qwen / Claude 3.5 Sonnet 연동)
+# 5. OpenRouter AI에게 수정 지시
 system_prompt = """
 당신은 한의원 홈페이지의 소스코드를 유지보수하는 전문 AI 웹 엔지니어입니다.
 사용자의 요청과 첨부자료 설명을 분석하여, 기존 `site-core.js` 파일의 `window.CLINIC_DATA` 객체 내용을 적절히 수정하거나 보강해야 합니다.
@@ -87,8 +87,7 @@ try:
         "Content-Type": "application/json"
     }
     payload = {
-        # "model": "anthropic/claude-3.5-sonnet", # 전 세계 1위 코딩 AI 모델
-        "model": "google/gemini-2.0-flash-lite-preview-02-05:free", # 완전 무료 AI 모델
+        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
@@ -98,6 +97,15 @@ try:
 
     response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload)
     res_data = response.json()
+    
+    # 🚨 에러 원인을 정확히 파악하기 위한 방어 코드 추가
+    if "choices" not in res_data:
+        error_msg = f"OpenRouter API 거절: {res_data}"
+        print(f"❌ {error_msg}")
+        sheet_work.update_cell(target_row_idx, 1, "대기")
+        sheet_work.update_cell(target_row_idx, 5, error_msg)
+        exit(1)
+
     ai_raw = res_data["choices"][0]["message"]["content"]
     
     # JSON 파싱
@@ -117,14 +125,14 @@ try:
 
     # 7. 구글 시트 상태 갱신
     new_status = "자료대기" if result.get("ai_question") else "완료"
-    sheet_work.update_cell(target_row_idx, 1, new_status) # A열: 상태
-    sheet_work.update_cell(target_row_idx, 2, result.get("ai_question", "")) # B열: AI 질문
-    sheet_work.update_cell(target_row_idx, 5, result.get("summary", "")) # E열: 요약
+    sheet_work.update_cell(target_row_idx, 1, new_status)
+    sheet_work.update_cell(target_row_idx, 2, result.get("ai_question", ""))
+    sheet_work.update_cell(target_row_idx, 5, result.get("summary", ""))
 
     print(f"✅ 작업 완료: 상태={new_status}, 요약={result.get('summary', '')}")
 
 except Exception as e:
     sheet_work.update_cell(target_row_idx, 1, "대기")
     sheet_work.update_cell(target_row_idx, 5, f"오류 발생: {str(e)}")
-    print(f"❌ 오류: {str(e)}")
+    print(f"❌ 시스템 오류: {str(e)}")
     exit(1)
