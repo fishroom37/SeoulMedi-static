@@ -87,8 +87,7 @@ try:
         "Content-Type": "application/json"
     }
     payload = {
-        "# 이 이름으로 복사해서 붙여넣기
-        "model": "google/gemini-2.0-flash-exp:free",
+        "model": "google/gemini-2.0-flash-exp:free", 
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
@@ -99,7 +98,6 @@ try:
     response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload)
     res_data = response.json()
     
-    # 🚨 에러 원인을 정확히 파악하기 위한 방어 코드 추가
     if "choices" not in res_data:
         error_msg = f"OpenRouter API 거절: {res_data}"
         print(f"❌ {error_msg}")
