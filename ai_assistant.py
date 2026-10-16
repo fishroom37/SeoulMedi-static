@@ -87,7 +87,8 @@ try:
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+        "# 이 이름으로 복사해서 붙여넣기
+        "model": "google/gemini-2.0-flash-exp:free",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
