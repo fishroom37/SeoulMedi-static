@@ -87,7 +87,8 @@ try:
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "anthropic/claude-3.5-sonnet", # 전 세계 1위 코딩 AI 모델
+        # "model": "anthropic/claude-3.5-sonnet", # 전 세계 1위 코딩 AI 모델
+        "model": "google/gemini-2.0-flash-lite-preview-02-05:free", # 완전 무료 AI 모델
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
